@@ -29,5 +29,5 @@ func main() {
 		image.POST("/", controller.CreateImage)
 	}
 
-	router.Run(":9999")
+	router.Run(":2111")
 }
