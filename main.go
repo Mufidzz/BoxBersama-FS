@@ -2,8 +2,11 @@ package main
 
 import (
 	"./controller"
+	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"log"
+	"os"
 	"time"
 )
 
@@ -28,6 +31,12 @@ func main() {
 		image.GET("/:name", controller.GetImage)
 		image.POST("/", controller.CreateImage)
 	}
+
+	path, err := os.Executable()
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Println("Working Dir: " + path)
 
 	router.Run(":2111")
 }
