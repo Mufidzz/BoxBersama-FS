@@ -1,7 +1,6 @@
 package main
 
 import (
-	"./config"
 	"./controller"
 	"fmt"
 	"github.com/gin-contrib/cors"
@@ -45,14 +44,8 @@ func main() {
 		log.Println(err)
 	}
 
-	out, err := os.Create(config.STORAGE_IMAGE_PATH + "ccc.txt")
-	if err != nil {
-		panic(err.Error())
-		return
-	}
-
+	fmt.Println("Home Dir: " + home)
 	fmt.Println("Working Dir: " + path)
-	fmt.Println(out)
 
 	router.Run(":2111")
 }
