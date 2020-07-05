@@ -29,6 +29,7 @@ func CreateImage(c *gin.Context) {
 
 	if err != nil {
 		fmt.Println("ERR JSON BIND")
+		panic(err.Error())
 	}
 
 	for _, img := range images {
@@ -44,7 +45,7 @@ func CreateImage(c *gin.Context) {
 		out, err := os.Create(config.STORAGE_IMAGE_PATH + imageName + ".png")
 
 		if err != nil {
-			c.JSON(200, gin.H{
+			c.JSON(400, gin.H{
 				"message": "Failed",
 			})
 			panic(err.Error())
