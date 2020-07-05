@@ -44,20 +44,32 @@ func CreateImage(c *gin.Context) {
 		out, err := os.Create(config.STORAGE_IMAGE_PATH + imageName + ".png")
 
 		if err != nil {
-			//TODO: Handle Error Here
+			c.JSON(200, gin.H{
+				"message": "Failed",
+			})
+
+			return
 		}
 
 		switch strings.TrimSuffix(base64pure[5:coi], ";base64") {
 		case "image/png":
 			err = png.Encode(out, img)
 			if err != nil {
-				//TODO: Handle Error Here
+				c.JSON(200, gin.H{
+					"message": "Failed Failed Encoding",
+				})
+
+				return
 			}
 			break
 		case "image/jpeg":
 			err = jpeg.Encode(out, img, &jpeg.Options{Quality: 80})
 			if err != nil {
-				//TODO: Handle Error Here
+				c.JSON(200, gin.H{
+					"message": "Failed Encoding",
+				})
+
+				return
 			}
 			break
 		}
