@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"log"
 	"os"
 	"path/filepath"
 	"time"
@@ -41,7 +40,7 @@ func main() {
 
 	path, err := os.Getwd()
 	if err != nil {
-		log.Println(err)
+		panic(err)
 	}
 
 	fmt.Println("Home Dir: " + home)
