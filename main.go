@@ -2,8 +2,12 @@ package main
 
 import (
 	"./controller"
+	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"log"
+	"os"
+	"path/filepath"
 	"time"
 )
 
@@ -29,21 +33,21 @@ func main() {
 		image.POST("/", controller.CreateImage)
 	}
 
-	//home, _ := os.UserHomeDir()
-	//err := os.Chdir(filepath.Join(home, "fs-storage", "fs.bb.ofcode.site"))
-	//if err != nil {
-	//	panic(err)
-	//}
-	//
-	//path, err := os.Getwd()
-	//if err != nil {
-	//	log.Println(err)
-	//}
-	//
-	//fmt.Println("Home Dir: " + home)
-	//fmt.Println("Working Dir: " + path)
+	home, _ := os.UserHomeDir()
+	err := os.Chdir(filepath.Join(home, "fs-storage", "fs.bb.ofcode.site"))
+	if err != nil {
+		panic(err)
+	}
 
-	err := router.Run(":2111")
+	path, err := os.Getwd()
+	if err != nil {
+		log.Println(err)
+	}
+
+	fmt.Println("Home Dir: " + home)
+	fmt.Println("Working Dir: " + path)
+
+	err = router.Run(":2111")
 	if err != nil {
 		panic("Router Run Failed")
 	}
