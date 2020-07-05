@@ -33,7 +33,7 @@ func main() {
 		image.POST("/", controller.CreateImage)
 	}
 
-	path, err := os.Executable()
+	path, err := os.Getwd()
 	if err != nil {
 		log.Println(err)
 	}
