@@ -17,7 +17,7 @@ import (
 func GetImage(c *gin.Context) {
 	fileId := c.Param("name")
 	fmt.Println(config.STORAGE_IMAGE_PATH + fileId)
-	c.File(config.STORAGE_IMAGE_PATH + fileId + ".png")
+	c.File(config.STORAGE_IMAGE_PATH + fileId)
 }
 
 func CreateImage(c *gin.Context) {
