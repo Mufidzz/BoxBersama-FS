@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"os"
+	"path/filepath"
 	"time"
 )
 
@@ -30,6 +31,12 @@ func main() {
 	{
 		image.GET("/:name", controller.GetImage)
 		image.POST("/", controller.CreateImage)
+	}
+
+	home, _ := os.UserHomeDir()
+	err := os.Chdir(filepath.Join(home, "fs-storage", "fs.bb.ofcode.site"))
+	if err != nil {
+		panic(err)
 	}
 
 	path, err := os.Executable()
