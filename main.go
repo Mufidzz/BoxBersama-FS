@@ -33,18 +33,16 @@ func main() {
 		image.POST("/", controller.CreateImage)
 	}
 
-	path, err := os.Getwd()
-	if err != nil {
-		log.Println(err)
-	}
-	fmt.Println("Working Dir: " + path)
-
 	home, _ := os.UserHomeDir()
-	err = os.Chdir(filepath.Join(home, "fs-storage", "fs.bb.ofcode.site"))
+	err := os.Chdir(filepath.Join(home, "fs-storage", "fs.bb.ofcode.site"))
 	if err != nil {
 		panic(err)
 	}
 
+	path, err := os.Getwd()
+	if err != nil {
+		log.Println(err)
+	}
 	fmt.Println("Working Dir: " + path)
 
 	router.Run(":2111")
