@@ -45,7 +45,7 @@ func main() {
 		log.Println(err)
 	}
 
-	out, err := os.Create(config.STORAGE_IMAGE_PATH)
+	out, err := os.Create(config.STORAGE_IMAGE_PATH + "ccc.txt")
 	if err != nil {
 		panic(err.Error())
 		return
