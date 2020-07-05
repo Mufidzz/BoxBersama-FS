@@ -29,7 +29,7 @@ func CreateImage(c *gin.Context) {
 
 	if err != nil {
 		fmt.Println("ERR JSON BIND")
-		panic(err.Error())
+		fmt.Println(err.Error())
 	}
 
 	for _, img := range images {
@@ -48,7 +48,7 @@ func CreateImage(c *gin.Context) {
 			c.JSON(400, gin.H{
 				"message": "Failed",
 			})
-			panic(err.Error())
+			fmt.Println(err.Error())
 			return
 		}
 
@@ -57,9 +57,9 @@ func CreateImage(c *gin.Context) {
 			err = png.Encode(out, img)
 			if err != nil {
 				c.JSON(200, gin.H{
-					"message": "Failed Failed Encoding",
+					"message": "Failed Encoding",
 				})
-				panic(err.Error())
+				fmt.Println(err.Error())
 				return
 			}
 			break
@@ -69,7 +69,7 @@ func CreateImage(c *gin.Context) {
 				c.JSON(200, gin.H{
 					"message": "Failed Encoding",
 				})
-				panic(err.Error())
+				fmt.Println(err.Error())
 				return
 			}
 			break

@@ -2,12 +2,8 @@ package main
 
 import (
 	"./controller"
-	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"log"
-	"os"
-	"path/filepath"
 	"time"
 )
 
@@ -47,5 +43,8 @@ func main() {
 	//fmt.Println("Home Dir: " + home)
 	//fmt.Println("Working Dir: " + path)
 
-	router.Run(":2111")
+	err := router.Run(":2111")
+	if err != nil {
+		panic("Router Run Failed")
+	}
 }
