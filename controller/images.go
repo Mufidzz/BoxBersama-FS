@@ -47,7 +47,7 @@ func CreateImage(c *gin.Context) {
 			c.JSON(200, gin.H{
 				"message": "Failed",
 			})
-
+			panic(err.Error())
 			return
 		}
 
@@ -58,7 +58,7 @@ func CreateImage(c *gin.Context) {
 				c.JSON(200, gin.H{
 					"message": "Failed Failed Encoding",
 				})
-
+				panic(err.Error())
 				return
 			}
 			break
@@ -68,7 +68,7 @@ func CreateImage(c *gin.Context) {
 				c.JSON(200, gin.H{
 					"message": "Failed Encoding",
 				})
-
+				panic(err.Error())
 				return
 			}
 			break
